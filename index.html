@@ -479,7 +479,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            background-image: linear-gradient(to right, rgba(254,254,254,1) 30%, rgba(254,254,254,0.5) 60%, transparent 100%), url('hero-background.jpg');
+            background-image: linear-gradient(to right, rgba(254,254,254,1) 30%, rgba(254,254,254,0.5) 60%, transparent 100%), url('images/hero-background.webp');
             background-size: cover;
             background-position: right center;
         }
@@ -661,97 +661,6 @@
             }
         }
         
-
-        /* Gallery Section */
-        .gallery-grid {
-            column-count: 3;
-            column-gap: 1.5rem;
-        }
-        .gallery-item {
-            margin-bottom: 1.5rem;
-            display: inline-block;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            cursor: none;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
-            opacity: 0;
-            transition: var(--transition-smooth);
-            display: flex;
-            align-items: flex-end;
-            padding: 1.5rem;
-            color: var(--pearl-white);
-        }
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        .gallery-overlay h4 {
-            color: var(--pearl-white);
-            margin: 0;
-        }
-        .gallery-cta {
-            text-align: center;
-            margin-top: 2.5rem;
-        }
-        @media (max-width: 768px) {
-            .gallery-grid { column-count: 2; }
-        }
-        @media (max-width: 480px) {
-            .gallery-grid { column-count: 1; }
-        }
-
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 10001;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-            cursor: none;
-        }
-        .lightbox.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .lightbox img {
-            max-width: 90vw;
-            max-height: 80vh;
-            border-radius: 10px;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 2.5rem;
-            color: white;
-            cursor: none;
-        }
-
         /* Testimonials */
         .testimonial-carousel-wrapper {
             position: relative;
@@ -968,14 +877,14 @@
     <!-- Header -->
     <header class="header">
         <div class="nav-container">
-            <a href="/" class="nav-logo magnetic-link">HM Clinic</a>
+            <a href="index.html" class="nav-logo magnetic-link">HM Clinic</a>
             <nav>
                 <ul class="nav-menu">
-                    <li class="nav-link"><a href="#services" class="magnetic-link">Treatments</a></li>
-                    <li class="nav-link"><a href="#why-us" class="magnetic-link">Our Philosophy</a></li>
-                    <li class="nav-link"><a href="#gallery" class="magnetic-link">Gallery</a></li>
-                    <li class="nav-link"><a href="#testimonials" class="magnetic-link">Reviews</a></li>
-                    <li class="nav-link"><a href="#contact" class="magnetic-link">Contact</a></li>
+                    <li class="nav-link"><a href="services.html" class="magnetic-link">Treatments</a></li>
+                    <li class="nav-link"><a href="philosophy.html" class="magnetic-link">Philosophy</a></li>
+                    <li class="nav-link"><a href="gallery.html" class="magnetic-link">Gallery</a></li>
+                    <li class="nav-link"><a href="reviews.html" class="magnetic-link">Reviews</a></li>
+                    <li class="nav-link"><a href="contact.html" class="magnetic-link">Contact</a></li>
                 </ul>
             </nav>
              <a href="https://wa.me/447368414935" target="_blank" class="btn btn-primary magnetic-link">
@@ -998,11 +907,11 @@
                     <h1>Best Lip Fillers in Kentish Town, London</h1>
                     <p>Experience the pinnacle of cosmetic enhancement at our Kentish Town clinic, where medical expertise from Harley Street meets bespoke artistry. We specialise in natural, refined results that celebrate your unique beauty.</p>
                     <div class="hero-ctas">
-                        <a href="#contact" class="btn btn-primary magnetic-link">
+                        <a href="contact.html" class="btn btn-primary magnetic-link">
                             Book Same Day
                             <span class="shimmer"></span>
                         </a>
-                        <a href="#services" class="btn btn-secondary magnetic-link">View Treatments</a>
+                        <a href="services.html" class="btn btn-secondary magnetic-link">View Treatments</a>
                     </div>
                 </div>
             </div>
@@ -1061,7 +970,7 @@
             <div class="container">
                 <div class="why-us-grid">
                     <div class="why-us-image fade-in">
-                        <img src="practitioner-portrait.jpg" alt="HM Clinic expert practitioner in a luxury treatment room in Kentish Town" loading="lazy">
+                        <img src="images/practitioner-portrait.webp" alt="HM Clinic expert practitioner in a luxury treatment room in Kentish Town" loading="lazy">
                     </div>
                     <div class="why-us-content fade-in">
                         <h2 style="text-align: left; margin-bottom: 1.5rem;">Harley Street Expertise in Kentish Town</h2>
@@ -1098,48 +1007,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" style="background-color: #fdfaf8;">
-            <div class="container">
-                <h2 class="fade-in">Our Natural-Looking Results</h2>
-                <div class="gallery-grid">
-                     <div class="gallery-item fade-in magnetic-link" data-src="gallery-lip-enhancement.jpg">
-                        <img src="gallery-lip-enhancement.jpg" alt="Natural lip filler before and after result in London" loading="lazy">
-                        <div class="gallery-overlay"><h4>Subtle Lip Enhancement</h4></div>
-                    </div>
-                     <div class="gallery-item fade-in magnetic-link" data-src="gallery-cheek-contouring.jpg">
-                        <img src="gallery-cheek-contouring.jpg" alt="Cheek filler for facial contouring before and after" loading="lazy">
-                        <div class="gallery-overlay"><h4>Cheek Contouring</h4></div>
-                    </div>
-                     <div class="gallery-item fade-in magnetic-link" data-src="gallery-jawline-definition.jpg">
-                        <img src="gallery-jawline-definition.jpg" alt="Jawline filler for a defined look before and after" loading="lazy">
-                        <div class="gallery-overlay"><h4>Jawline Definition</h4></div>
-                    </div>
-                     <div class="gallery-item fade-in magnetic-link" data-src="gallery-tear-trough.jpg">
-                        <img src="gallery-tear-trough.jpg" alt="Tear trough filler for under-eye bags before and after" loading="lazy">
-                        <div class="gallery-overlay"><h4>Tear Trough Rejuvenation</h4></div>
-                    </div>
-                     <div class="gallery-item fade-in magnetic-link" data-src="gallery-rhinoplasty.jpg">
-                        <img src="gallery-rhinoplasty.jpg" alt="Non-surgical rhinoplasty result from HM Clinic" loading="lazy">
-                        <div class="gallery-overlay"><h4>Non-Surgical Rhinoplasty</h4></div>
-                    </div>
-                    <div class="gallery-item fade-in magnetic-link" data-src="gallery-forehead-smoothing.jpg">
-                        <img src="gallery-forehead-smoothing.jpg" alt="Botox for forehead lines before and after" loading="lazy">
-                        <div class="gallery-overlay"><h4>Forehead Line Smoothing</h4></div>
-                    </div>
-                </div>
-                <div class="gallery-cta fade-in">
-                    <a href="#gallery" class="btn btn-secondary magnetic-link">View Full Gallery</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Lightbox -->
-        <div class="lightbox">
-            <span class="lightbox-close magnetic-link">&times;</span>
-            <img src="" alt="Enlarged gallery image of aesthetic treatment result">
-        </div>
         
         <!-- Client Testimonials -->
         <section id="testimonials">
@@ -1346,19 +1213,18 @@
                 <div class="footer-col">
                     <h4>Our Treatments</h4>
                     <ul>
-                        <li><a href="#services" class="magnetic-link">Lip Fillers</a></li>
-                        <li><a href="#services" class="magnetic-link">Dermal Fillers</a></li>
-                        <li><a href="#services" class="magnetic-link">Anti-Wrinkle Injections</a></li>
-                        <li><a href="#gallery" class="magnetic-link">Non-Surgical Rhinoplasty</a></li>
+                        <li><a href="services.html" class="magnetic-link">Lip Fillers</a></li>
+                        <li><a href="services.html" class="magnetic-link">Dermal Fillers</a></li>
+                        <li><a href="services.html" class="magnetic-link">Anti-Wrinkle Injections</a></li>
                     </ul>
                 </div>
                  <div class="footer-col">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="/privacy" class="magnetic-link">Privacy Policy</a></li>
-                        <li><a href="/terms" class="magnetic-link">Terms & Conditions</a></li>
-                        <li><a href="/cookies" class="magnetic-link">Cookie Policy</a></li>
-                        <li><a href="/sitemap.xml" class="magnetic-link">Sitemap</a></li>
+                        <li><a href="privacy.html" class="magnetic-link">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="magnetic-link">Terms & Conditions</a></li>
+                        <li><a href="cookies.html" class="magnetic-link">Cookie Policy</a></li>
+                        <li><a href="sitemap.html" class="magnetic-link">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -1442,9 +1308,11 @@
         });
         document.querySelectorAll('.nav-link a').forEach(link => {
             link.addEventListener('click', () => {
-                 hamburger.classList.remove('active');
-                 navMenu.classList.remove('active');
-                 document.body.classList.remove('no-scroll');
+                 if (hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                 }
             });
         });
 
@@ -1496,31 +1364,6 @@
         if (statsSection) {
              counterObserver.observe(statsSection);
         }
-
-
-        // --- Gallery Lightbox ---
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const lightbox = document.querySelector('.lightbox');
-        const lightboxImg = lightbox.querySelector('img');
-        const lightboxClose = lightbox.querySelector('.lightbox-close');
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const src = item.getAttribute('data-src');
-                lightboxImg.setAttribute('src', src);
-                lightbox.classList.add('active');
-                document.body.classList.add('no-scroll');
-            });
-        });
-        const closeLightbox = () => {
-            lightbox.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        };
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-        
         
         // --- FAQ Accordion ---
         const faqItems = document.querySelectorAll('.faq-item');
@@ -1544,4 +1387,3 @@
     </script>
 </body>
 </html>
-
