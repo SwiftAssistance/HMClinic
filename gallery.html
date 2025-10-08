@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transformation Gallery | HM Clinic London</title>
-    <meta name="description" content="Explore our interactive before-and-after gallery. Witness the stunning, natural results of our aesthetic treatments and envision your own transformation.">
+    <meta name="description" content="Explore our gallery. Witness the stunning, natural results of our aesthetic treatments and envision your own transformation.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,7 +78,7 @@
         .fade-in.visible { opacity: 1; }
 
         /* Hero Section */
-        .hero { height: 100vh; min-height: 700px; display: flex; align-items: center; position: relative; overflow: hidden; background-image: linear-gradient(to right, rgba(254,254,254,1) 30%, rgba(254,254,254,0.5) 60%, transparent 100%), url('images/gallery-hero-background.jpg'); background-size: cover; background-position: center center; }
+        .hero { height: 100vh; min-height: 700px; display: flex; align-items: center; position: relative; overflow: hidden; background-image: linear-gradient(to right, rgba(254,254,254,1) 30%, rgba(254,254,254,0.5) 60%, transparent 100%), url('images/gallery-hero-background.webp'); background-size: cover; background-position: center center; }
         .hero-content { max-width: 650px; position: relative; z-index: 2; }
         .hero-content p { font-size: clamp(1rem, 2vw, 1.25rem); margin: 1.5rem 0 2.5rem; max-width: 500px; }
         .hero-ctas { display: flex; gap: 1.5rem; flex-wrap: wrap; }
@@ -89,17 +89,17 @@
         
         /* Page-specific Styles */
         .gallery-section { padding: 6rem 0; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem; }
-        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px -10px var(--shadow-luxury); transition: var(--transition-smooth); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .gallery-item { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px -10px var(--shadow-luxury); 
+            transition: var(--transition-smooth);
+            aspect-ratio: 1 / 1;
+        }
         .gallery-item:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px -10px var(--shadow-luxury); }
-        
-        /* B/A Slider */
-        .ba-slider { position: relative; overflow: hidden; }
-        .ba-slider img { max-width: 100%; height: auto; display: block; }
-        .ba-resize { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; }
-        .ba-resize img { width: 100%; height: 100%; object-fit: cover; object-position: left; }
-        .ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 4px; height: 100%; background: var(--pearl-white); cursor: ew-resize; display: flex; align-items: center; justify-content: center; }
-        .ba-handle::after { content: '↔'; font-size: 1rem; width: 40px; height: 40px; border: 3px solid var(--pearl-white); border-radius: 50%; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); display: grid; place-items: center; color: white; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .gallery-item-title { position: absolute; bottom: 0; left: 0; width: 100%; padding: 1rem 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%); color: var(--pearl-white); z-index: 5; pointer-events: none; }
         .gallery-item-title h4 { color: var(--pearl-white); margin: 0; font-size: 1.2rem; }
         
@@ -107,7 +107,8 @@
         .cta-section-content { max-width: 700px; margin: 0 auto; text-align: center; }
         .cta-section h2 { color: var(--pearl-white); }
         .cta-section p { margin: 1rem auto 2.5rem; opacity: 0.9; }
-        .cta-section .btn { background-color: var(--pearl-white); color: var(--rose-gold-primary); padding: 1rem 2.5rem; font-size: 1.1rem; }
+        .cta-section .btn { background-color: transparent; border: 2px solid var(--pearl-white); color: var(--pearl-white); padding: 1rem 2.5rem; font-size: 1.1rem; }
+        .cta-section .btn:hover { background-color: var(--pearl-white); color: var(--rose-gold-primary); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         
         /* Responsive */
         @media (max-width: 768px) { 
@@ -156,7 +157,7 @@
             <div class="container">
                 <div class="hero-content fade-in">
                     <h1>The Transformation Showcase</h1>
-                    <p>Witness the artistry and precision behind every treatment. Drag the slider on any image to reveal the beautiful, natural-looking transformations we create for our clients daily.</p>
+                    <p>Explore the artistry and precision behind every treatment. Browse the beautiful, natural-looking transformations we create for our clients daily.</p>
                     <div class="hero-ctas">
                         <a href="https://wa.me/447368414935" target="_blank" class="btn btn-primary magnetic-link">
                             Book Now
@@ -174,69 +175,21 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-category="lips">
-                        <div class="ba-slider">
-                            <img src="images/gallery/lips-1-before.jpg" alt="Lips Before Treatment">
-                            <div class="ba-resize"><img src="images/gallery/lips-1-after.jpg" alt="Subtle Lip Enhancement After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Subtle Lip Enhancement</h4></div>
-                    </div>
-                    <div class="gallery-item" data-category="facial">
-                         <div class="ba-slider">
-                            <img src="images/gallery/facial-1-before.jpg" alt="Cheeks Before Treatment">
-                            <div class="ba-resize"><img src="images/gallery/facial-1-after.jpg" alt="Cheek Contouring After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Cheek Contouring</h4></div>
-                    </div>
-                    <div class="gallery-item" data-category="anti-wrinkle">
-                        <div class="ba-slider">
-                            <img src="images/gallery/anti-wrinkle-1-before.jpg" alt="Forehead Before Treatment">
-                            <div class="ba-resize"><img src="images/gallery/anti-wrinkle-1-after.jpg" alt="Forehead Line Smoothing After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Forehead Line Smoothing</h4></div>
-                    </div>
-                    <div class="gallery-item" data-category="lips">
-                        <div class="ba-slider">
-                            <img src="images/gallery/lips-2-before.jpg" alt="Lips Before Treatment">
-                            <div class="ba-resize"><img src="images/gallery/lips-2-after.jpg" alt="Defined Cupid's Bow After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Defined Cupid's Bow</h4></div>
-                    </div>
                     <div class="gallery-item" data-category="skin">
-                        <div class="ba-slider">
-                            <img src="images/gallery/skin-1-before.jpg" alt="Skin Before Profhilo">
-                            <div class="ba-resize"><img src="images/gallery/skin-1-after.jpg" alt="Profhilo Skin Glow After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Profhilo Skin Glow</h4></div>
+                        <img src="images/microneedling.webp" alt="Microneedling result">
+                        <div class="gallery-item-title"><h4>Microneedling</h4></div>
                     </div>
                     <div class="gallery-item" data-category="facial">
-                        <div class="ba-slider">
-                            <img src="images/gallery/facial-2-before.jpg" alt="Jawline Before Treatment">
-                            <div class="ba-resize"><img src="images/gallery/facial-2-after.jpg" alt="Jawline Definition After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Jawline Definition</h4></div>
-                    </div>
-                     <div class="gallery-item" data-category="facial">
-                        <div class="ba-slider">
-                            <img src="images/gallery/tear-trough-1-before.jpg" alt="Tear Trough Before Treatment">
-                            <div class="ba-resize"><img src="images/gallery/tear-trough-1-after.jpg" alt="Tear Trough Rejuvenation After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Tear Trough Rejuvenation</h4></div>
+                        <img src="images/cheek-chin-filler.webp" alt="Cheek and Chin Filler result">
+                        <div class="gallery-item-title"><h4>Cheek and Chin Filler</h4></div>
                     </div>
                     <div class="gallery-item" data-category="facial">
-                        <div class="ba-slider">
-                            <img src="images/gallery/rhinoplasty-1-before.jpg" alt="Nose Before Non-Surgical Rhinoplasty">
-                            <div class="ba-resize"><img src="images/gallery/rhinoplasty-1-after.jpg" alt="Non-Surgical Rhinoplasty After"></div>
-                            <div class="ba-handle"></div>
-                        </div>
-                        <div class="gallery-item-title"><h4>Non-Surgical Rhinoplasty</h4></div>
+                        <img src="images/jawline-filler.webp" alt="Jawline Filler result">
+                        <div class="gallery-item-title"><h4>Jawline Filler</h4></div>
+                    </div>
+                    <div class="gallery-item" data-category="lips">
+                        <img src="images/lip-injections.webp" alt="Lip Injections result">
+                        <div class="gallery-item-title"><h4>Lip Injections</h4></div>
                     </div>
                 </div>
             </div>
@@ -246,9 +199,12 @@
             <div class="container cta-section-content">
                 <h2>Ready for Your Own Transformation?</h2>
                 <p>Your journey to refined, natural beauty starts with a conversation. Contact us for a complimentary consultation to discuss how we can achieve your aesthetic goals.</p>
-                <a href="https://wa.me/447368414935" target="_blank" class="btn magnetic-link">Book Your Consultation</a>
+                <a href="https://wa.me/447368414935" target="_blank" class="btn magnetic-link">
+                    Book Your Consultation
+                </a>
             </div>
         </section>
+
     </main>
     
     <footer class="footer">
@@ -321,54 +277,9 @@
             });
         });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-
-        // --- Before & After Slider Logic ---
-        function initBASliders() {
-            document.querySelectorAll('.ba-slider').forEach(slider => {
-                const handle = slider.querySelector('.ba-handle');
-                if (handle.dataset.eventsAttached) return;
-
-                const onDragStart = (startEvent) => {
-                    startEvent.preventDefault();
-                    
-                    const resizeElement = slider.querySelector('.ba-resize');
-                    const rect = slider.getBoundingClientRect();
-                    cursor.classList.add('slider-hover');
-
-                    const onDragMove = (moveEvent) => {
-                        if (rect.width === 0) return;
-                        const clientX = moveEvent.touches ? moveEvent.touches[0].clientX : moveEvent.clientX;
-                        let x = clientX - rect.left;
-                        if (x < 0) x = 0;
-                        if (x > rect.width) x = rect.width;
-                        const percentage = (x / rect.width) * 100;
-                        handle.style.left = percentage + '%';
-                        resizeElement.style.width = percentage + '%';
-                    };
-
-                    const onDragEnd = () => {
-                        window.removeEventListener('mousemove', onDragMove);
-                        window.removeEventListener('mouseup', onDragEnd);
-                        window.removeEventListener('touchmove', onDragMove);
-                        window.removeEventListener('touchend', onDragEnd);
-                        cursor.classList.remove('slider-hover');
-                    };
-
-                    window.addEventListener('mousemove', onDragMove);
-                    window.addEventListener('mouseup', onDragEnd);
-                    window.addEventListener('touchmove', onDragMove);
-                    window.addEventListener('touchend', onDragEnd);
-                };
-
-                handle.addEventListener('mousedown', onDragStart);
-                handle.addEventListener('touchstart', onDragStart, { passive: false });
-                handle.dataset.eventsAttached = 'true';
-            });
-        }
-        initBASliders();
     });
     </script>
 </body>
 </html>
+
 
