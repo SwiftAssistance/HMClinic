@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Reviews | HM Clinic London</title>
+    <meta name="description" content="Read authentic, 5-star reviews from our happy clients. See why HM Clinic is London's trusted choice for natural-looking aesthetic treatments.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23E8B4A0'/><text x='16' y='21' text-anchor='middle' font-family='Playfair Display' font-size='14' fill='white'>HM</text></svg>">
+
+    <style>
+        :root {
+            --rose-gold-primary: #E8B4A0;
+            --rose-gold-secondary: #D4A574;
+            --rose-gold-light: #F7E7CE;
+            --pearl-white: #FEFEFE;
+            --charcoal: #2C2C2C;
+            --shadow-luxury: rgba(212, 165, 116, 0.15);
+            --font-header: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { background-color: var(--pearl-white); color: var(--charcoal); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; cursor: none; }
+        body.loading, body.no-scroll { overflow: hidden; }
+        h1, h2, h3, h4 { font-family: var(--font-header); font-weight: 600; line-height: 1.2; color: var(--charcoal); }
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+        h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
+        p { font-size: clamp(1rem, 1.5vw, 1.1rem); }
+        a { color: inherit; text-decoration: none; cursor: none; }
+        .container { max-width: 1440px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* Consistent Header, Footer, Cursor */
+        .cursor { width: 20px; height: 20px; border: 2px solid var(--rose-gold-primary); border-radius: 50%; position: fixed; pointer-events: none; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s; z-index: 9999; }
+        .cursor-dot { width: 6px; height: 6px; background-color: var(--rose-gold-primary); border-radius: 50%; position: fixed; pointer-events: none; transform: translate(-50%, -50%); transition: transform 0.1s; z-index: 9999; }
+        .cursor.magnetic { width: 60px; height: 60px; border-color: var(--rose-gold-secondary); background-color: rgba(232, 180, 160, 0.2); }
+        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--pearl-white); z-index: 10000; display: flex; justify-content: center; align-items: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
+        .preloader.hidden { opacity: 0; visibility: hidden; }
+        .preloader-logo { font-family: var(--font-header); font-size: 3rem; color: var(--charcoal); }
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 0; transition: var(--transition-smooth); }
+        .header.scrolled { padding: 1rem 0; background: rgba(254, 254, 254, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1600px; margin: 0 auto; padding: 0 2rem; }
+        .nav-logo { font-family: var(--font-header); font-size: 1.8rem; font-weight: 600; }
+        .nav-menu { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-link a { font-weight: 500; position: relative; }
+        .nav-link a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 50%; transform: translateX(-50%); background-color: var(--rose-gold-primary); transition: width 0.3s; }
+        .nav-link a:hover::after { width: 100%; }
+        .btn { padding: 0.8rem 1.8rem; border-radius: 50px; font-weight: 600; transition: var(--transition-smooth); position: relative; overflow: hidden; border: none; cursor: none; }
+        .btn-primary { background-color: var(--rose-gold-primary); color: var(--pearl-white); }
+        .btn-primary:hover { box-shadow: 0 10px 20px var(--shadow-luxury); transform: translateY(-3px); }
+        .btn-secondary { background-color: transparent; color: var(--charcoal); border: 2px solid var(--rose-gold-light); }
+        .btn-secondary:hover { background-color: var(--rose-gold-light); color: var(--charcoal); }
+        .btn .shimmer { position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%); opacity: 0.8; }
+        .btn:hover .shimmer { animation: shimmerEffect 1.5s infinite; }
+        .hamburger { display: none; cursor: none; z-index: 1001; }
+        .hamburger-line { width: 28px; height: 3px; background-color: var(--charcoal); margin: 5px 0; transition: 0.4s; border-radius: 3px; }
+        .footer { background-color: var(--charcoal); color: var(--pearl-white); padding: 5rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 4rem; }
+        .footer-col h4 { color: var(--pearl-white); font-family: var(--font-header); margin-bottom: 1.5rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.8rem; }
+        .footer-col a { color: rgba(254,254,254,0.7); transition: color 0.3s; }
+        .footer-col a:hover { color: var(--rose-gold-primary); }
+        .social-icons { display: flex; gap: 1rem; }
+        .social-icons a { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid rgba(254,254,254,0.3); border-radius: 50%; transition: var(--transition-smooth); }
+        .social-icons a:hover { transform: translateY(-3px); border-color: var(--rose-gold-primary); background-color: rgba(232, 180, 160, 0.1); }
+        .footer-bottom { border-top: 1px solid rgba(254,254,254,0.2); padding-top: 2rem; text-align: center; font-size: 0.9rem; color: rgba(254,254,254,0.5); }
+
+        /* Keyframes */
+        @keyframes luxuryFloat { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        @keyframes shimmerEffect { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes morphBlob { 0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; } 50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; } 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; } }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Hero Section */
+        .hero { height: 100vh; min-height: 700px; display: flex; align-items: center; position: relative; overflow: hidden; background-image: linear-gradient(to right, rgba(254,254,254,1) 30%, rgba(254,254,254,0.5) 60%, transparent 100%), url('images/reviews-hero-background.jpg'); background-size: cover; background-position: center center; }
+        .hero-content { max-width: 650px; position: relative; z-index: 2; }
+        .hero-content p { font-size: clamp(1rem, 2vw, 1.25rem); margin: 1.5rem 0 2.5rem; max-width: 500px; }
+        .hero-ctas { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .hero-background-blob { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, var(--blush-pink) 0%, var(--rose-gold-light) 100%); opacity: 0.5; top: 50%; right: 15%; transform: translateY(-50%); animation: morphBlob 15s infinite linear; z-index: 0; }
+        .floating-element { position: absolute; background-color: rgba(232, 180, 160, 0.2); border-radius: 50%; z-index: 1; animation: luxuryFloat 10s infinite ease-in-out; }
+        .float1 { width: 150px; height: 150px; top: 15%; left: 45%; animation-duration: 8s; }
+        .float2 { width: 80px; height: 80px; bottom: 10%; left: 55%; animation-duration: 12s; }
+        
+        /* Reviews Section */
+        .reviews-section { padding: 6rem 0; }
+        .ratings-summary {
+            background: #fdfaf8;
+            border: 1px solid var(--rose-gold-light);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 0 auto 5rem auto;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .summary-score { text-align: center; }
+        .summary-score .score { font-size: 4rem; font-family: var(--font-header); color: var(--rose-gold-secondary); line-height: 1; }
+        .summary-score .stars { font-size: 1.5rem; color: var(--rose-gold-secondary); }
+        .summary-score p { margin: 0.5rem 0 0; font-weight: 500; }
+        .summary-divider { width: 1px; background-color: var(--rose-gold-light); align-self: stretch; }
+        .summary-details { flex-grow: 1; }
+        .summary-details h3 { margin-bottom: 1rem; }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .review-card {
+            background: #fdfaf8;
+            border: 1px solid var(--rose-gold-light);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px -15px var(--shadow-luxury);
+            transition: var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px var(--shadow-luxury);
+        }
+        .review-icon {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: var(--rose-gold-light);
+            line-height: 1;
+        }
+        .review-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            padding-left: 1rem;
+            margin-bottom: auto;
+        }
+        .review-footer {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rose-gold-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .review-author h4 { font-size: 1.2rem; margin: 0; }
+        .review-author .date { font-size: 0.9rem; opacity: 0.7; }
+        .rating { color: var(--rose-gold-secondary); font-size: 1.1rem; }
+        
+        .cta-section { background: linear-gradient(45deg, var(--rose-gold-primary), var(--rose-gold-secondary)); color: var(--pearl-white); padding: 6rem 0; margin-top: 4rem; }
+        .cta-section-content { max-width: 700px; margin: 0 auto; text-align: center; }
+        .cta-section h2 { color: var(--pearl-white); }
+        .cta-section p { margin: 1rem auto 2.5rem; opacity: 0.9; }
+        .cta-section .btn { background-color: var(--pearl-white); color: var(--rose-gold-primary); padding: 1rem 2.5rem; font-size: 1.1rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu, .header .btn-primary { display: none; }
+            .hamburger { display: block; }
+            .nav-menu.active { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--pearl-white); justify-content: center; align-items: center; font-size: 1.5rem; gap: 2rem; }
+            .hamburger.active .hamburger-line:nth-child(1) { transform: rotate(-45deg) translate(-6px, 7px); }
+            .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
+            .hamburger.active .hamburger-line:nth-child(3) { transform: rotate(45deg) translate(-6px, -7px); }
+            .ratings-summary { flex-direction: column; text-align: center; }
+            .summary-divider { display: none; }
+        }
+    </style>
+</head>
+<body class="loading">
+
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    <div class="preloader"><div class="preloader-logo">HM</div></div>
+
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo magnetic-link">HM Clinic</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-link"><a href="services.html" class="magnetic-link">Treatments</a></li>
+                    <li class="nav-link"><a href="philosophy.html" class="magnetic-link">Philosophy</a></li>
+                    <li class="nav-link"><a href="gallery.html" class="magnetic-link">Gallery</a></li>
+                    <li class="nav-link"><a href="reviews.html" class="magnetic-link">Reviews</a></li>
+                    <li class="nav-link"><a href="contact.html" class="magnetic-link">Contact</a></li>
+                </ul>
+            </nav>
+             <a href="https://wa.me/447368414935" target="_blank" class="btn btn-primary magnetic-link">
+                Book Consultation
+                <span class="shimmer"></span>
+            </a>
+            <div class="hamburger magnetic-link">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>The Wall of Love</h1>
+                    <p>Discover why our clients trust us to deliver exceptional, natural-looking results. Here are just a few of their stories, shared in their own words.</p>
+                    <div class="hero-ctas">
+                        <a href="https://wa.me/447368414935" target="_blank" class="btn btn-primary magnetic-link">
+                            Book Now
+                            <span class="shimmer"></span>
+                        </a>
+                        <a href="philosophy.html" class="btn btn-secondary magnetic-link">Our Philosophy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-background-blob"></div>
+            <div class="floating-element float1"></div>
+            <div class="floating-element float2"></div>
+        </section>
+
+        <section class="reviews-section">
+            <div class="container">
+                <div class="ratings-summary fade-in">
+                    <div class="summary-score">
+                        <div class="score">5.0</div>
+                        <div class="stars">★★★★★</div>
+                        <p>Based on 250+ Reviews</p>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-details">
+                        <h3>Authentic, Verified Feedback</h3>
+                        <p>Every review is from a real client, independently verified through Booksy. We are proud of the trust our community places in us and are committed to upholding the highest standards of care and artistry.</p>
+                        <a href="https://booksy.com/en-gb/77525_hm-clinic_aesthetic-medicine_311817_london" target="_blank" class="btn btn-secondary magnetic-link" style="padding: 0.6rem 1.2rem;">Verify on Booksy</a>
+                    </div>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card magnetic-link fade-in" style="transition-delay: 0.1s;">
+                        <div class="review-icon">“</div>
+                        <p>Hollie is amazing at what she does. Always leave with the best results. Very professional and friendly. Wouldn't go anywhere else.</p>
+                        <div class="review-footer">
+                            <div class="review-author">
+                                <h4>Lauren W</h4>
+                                <div class="date">September 2025</div>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                     <div class="review-card magnetic-link fade-in" style="transition-delay: 0.2s;">
+                        <div class="review-icon">“</div>
+                        <p>Amazing experience as always, Hollie is lovely and makes you feel so comfortable! The best in the business!</p>
+                        <div class="review-footer">
+                            <div class="review-author">
+                                <h4>Anna B</h4>
+                                <div class="date">September 2025</div>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="review-card magnetic-link fade-in" style="transition-delay: 0.3s;">
+                        <div class="review-icon">“</div>
+                        <p>Love going to Hollie she always does such an amazing job and makes me feel so comfortable.</p>
+                        <div class="review-footer">
+                            <div class="review-author">
+                                <h4>Fay M</h4>
+                                <div class="date">August 2025</div>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="review-card magnetic-link fade-in">
+                        <div class="review-icon">“</div>
+                        <p>Hollie is amazing! She makes you feel so comfortable and explains everything perfectly. Couldn't recommend her enough!</p>
+                         <div class="review-footer">
+                            <div class="review-author">
+                                <h4>Keeley M</h4>
+                                <div class="date">August 2025</div>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="review-card magnetic-link fade-in">
+                        <div class="review-icon">“</div>
+                        <p>Hollie is amazing at what she does & a lovely girl too. Wouldn’t trust anyone else, thank you Hollie!</p>
+                        <div class="review-footer">
+                            <div class="review-author">
+                                <h4>Molly</h4>
+                                <div class="date">July 2025</div>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="review-card magnetic-link fade-in">
+                        <div class="review-icon">“</div>
+                        <p>Amazing as always, so professional and friendly, she is the best at what she does.</p>
+                        <div class="review-footer">
+                            <div class="review-author">
+                                <h4>Talia</h4>
+                                <div class="date">July 2025</div>
+                            </div>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container cta-section-content">
+                <h2>Join Our Community of Happy Clients</h2>
+                <p>Your journey to refined, natural beauty starts with a conversation. Contact us for a complimentary consultation to discuss how we can achieve your aesthetic goals.</p>
+                <a href="https://wa.me/447368414935" target="_blank" class="btn magnetic-link">Book Your Consultation</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>HM Clinic</h4>
+                    <p>London's premier aesthetic artistry clinic, located in Kentish Town. Natural results, exceptional care.</p>
+                     <div class="social-icons">
+                        <a href="https://www.instagram.com/thehmclinic.uk" target="_blank" class="magnetic-link" aria-label="Instagram">
+                            <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new--v1.png" alt="Instagram Logo" style="width: 24px; height: 24px;">
+                        </a>
+                        <a href="https://wa.me/447368414935" target="_blank" class="magnetic-link" aria-label="WhatsApp">
+                           <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp--v1.png" alt="WhatsApp Logo" style="width: 24px; height: 24px;">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html" class="magnetic-link">Treatments</a></li>
+                        <li><a href="philosophy.html" class="magnetic-link">Our Philosophy</a></li>
+                        <li><a href="gallery.html" class="magnetic-link">Results Gallery</a></li>
+                        <li><a href="contact.html" class="magnetic-link">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html" class="magnetic-link">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="magnetic-link">Terms & Conditions</a></li>
+                        <li><a href="cookies.html" class="magnetic-link">Cookie Policy</a></li>
+                        <li><a href="sitemap.html" class="magnetic-link">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HM Clinic London. All Rights Reserved. Designed for excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Consistent Scripts ---
+        const preloader = document.querySelector('.preloader');
+        window.addEventListener('load', () => { setTimeout(() => { preloader.classList.add('hidden'); document.body.classList.remove('loading'); }, 500); });
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        const magneticLinks = document.querySelectorAll('.magnetic-link');
+        let cursorX = 0, cursorY = 0, dotX = 0, dotY = 0;
+        window.addEventListener('mousemove', (e) => { cursorX = e.clientX; cursorY = e.clientY; });
+        function animateCursor() { const ease = 0.1; dotX += (cursorX - dotX) * ease; dotY += (cursorY - dotY) * ease; cursor.style.left = `${cursorX}px`; cursor.style.top = `${cursorY}px`; cursorDot.style.left = `${dotX}px`; cursorDot.style.top = `${dotY}px`; requestAnimationFrame(animateCursor); }
+        animateCursor();
+        magneticLinks.forEach(link => { link.addEventListener('mouseenter', () => cursor.classList.add('magnetic')); link.addEventListener('mouseleave', () => cursor.classList.remove('magnetic')); });
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('active'); document.body.classList.toggle('no-scroll'); });
+        document.querySelectorAll('.nav-link a').forEach(link => {
+            link.addEventListener('click', () => { if (hamburger.classList.contains('active')) { hamburger.classList.remove('active'); navMenu.classList.remove('active'); document.body.classList.remove('no-scroll'); } });
+        });
+        
+        // --- Animate on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if(entry.isIntersecting) { 
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                } 
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+    </script>
+</body>
+</html>
+
